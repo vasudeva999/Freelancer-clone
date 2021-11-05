@@ -1,0 +1,62 @@
+<section class="vh-100" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+                
+                <img src="assets/img/freelancer-logo.jpg" alt="Image not Found!" style="height: 50px; width: 60%;"/>
+              <h3 class="mb-5">Welcome Back</h3>
+
+            
+              <button class="btn btn-outline-primary" style="margin-right: 5%; margin-bottom: 5%;" (click)="signInWithFB()">Log in with facebook</button>
+              <button class="btn btn-outline-danger" style="margin-right: 5%; margin-bottom: 5%;" (click)="signInWithGoogle()">Log in with Google+</button>
+
+              <br>
+              <form (ngSubmit)="submitForm()">
+              <div class="mb-4">
+                <!-- <h6 class=" text-uppercase">OR</h6> -->
+                <hr data-content="OR" class="hr-text">
+                </div>
+  
+              <!-- Email input -->
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" 
+                name="email" [(ngModel)]=userService.email placeholder="Recipient's Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+              </div>
+  
+              <!-- Password input -->
+              <div class="input-group mb-3">
+                <input [type]="userService.password_type" class="form-control" 
+                name="password" [(ngModel)]=userService.password placeholder="Password" >
+                <button style="width: 20%;" [class]="userService.class_status" type="button" (click)="userService.show_password()">{{ userService.btn_name }}</button>
+              </div>
+  
+              <!-- Checkbox -->
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="checked">
+                <label class="form-check-label" style="margin-right: 60%;">Remember me!</label>
+              </div>
+              
+              <button type="button" hidden data-toggle="modal" data-target="#alert" 
+              id="pop_up"></button>
+
+              <button type="submit" class="btn btn-primary" style="width: 60%;" 
+              data-toggle="modal" data-target="#alert" (click)="submitForm()">Log in</button>
+              
+              </form>
+  
+              <hr class="my-4">
+              
+              <p class="text-center"><a style="text-decoration: none" href="forgotPassword">Forgot Password?</a></p>
+              <p class="text-center">Don't have an account? <a style="text-decoration: none" href="signup">Sign Up</a></p>
+
+              <a href="" style="text-decoration: none"> < Back! </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

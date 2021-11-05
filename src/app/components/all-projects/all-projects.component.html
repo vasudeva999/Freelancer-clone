@@ -1,0 +1,53 @@
+<mat-progress-bar mode="buffer" *ngIf='allProjects.length==0'></mat-progress-bar>
+  <main role="main" class="container">
+    <div class="row">
+
+        <div class="col-md-8" >
+            <!-- {% block content %}{% endblock %} -->
+            <h3 *ngIf="userService.noData">{{ userService.data_check }}</h3>
+            <div class="container h-10" *ngIf='allProjects.length!=0'>
+              <div class="d-flex justify-content-center h-10">
+                <div class="searchbar">
+                  <input class="search_input" type="text" [(ngModel)]="term" placeholder="Search...">
+                  <p href="#" class="search_icon"><i class="fas fa-search"></i></p>
+                </div>
+              </div>
+            </div>
+
+            
+            <article class="media content-section" *ngFor="let project of allProjects | filter: term ">
+                <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" style="text-decoration: none; cursor: pointer;" (click)="showProfile(project[1]._id)">@{{ project[1].name }}</a>
+                    <a class="mr-2" style="text-decoration: none; margin-left: 5%;" *ngIf="userService.getId()==project[1]._id" href="update-project/{{ project[0]._id }}">Edit</a>
+                    <small class="text-muted" style="margin-left: 10%;">Posted Date : {{ userService.getDate(project[0].date) }}</small>
+                </div>
+                <h2><a class="article-title" href="/showProject/{{project[0]._id}}">{{ project[0].title }}</a></h2>
+                <p class="article-content" style="display: -webkit-box;
+                overflow : hidden;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;">{{ project[0].describe }}</p>
+                </div>
+                <div class="article-metadata">
+                    
+                </div>
+                <!-- <button type="button" class="btn btn-outline-primary" (click)="explore(project[0]._id)">Explore</button>
+                <button type="button" class="btn btn-outline-primary" style="margin-left: 10%;" (click)="showProfile(project[1]._id)">View Profile</button> -->
+            </article>
+          </div>
+      <div class="col-md-4">
+        <!-- <div class="content-section">
+          <h3>Navigation</h3>
+          <p class='text-muted'>Search for project
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-light">Latest Posts</li>
+              <li class="list-group-item list-group-item-light">Proposals</li>
+              <li class="list-group-item list-group-item-light">About Creator</li>
+              <li class="list-group-item list-group-item-light">Report</li>
+              <li class="list-group-item list-group-item-light">etc</li>
+            </ul>
+        </div> -->
+      </div>
+    </div>
+  </main>

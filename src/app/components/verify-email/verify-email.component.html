@@ -1,0 +1,53 @@
+<section class="vh-100" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+                
+
+                <img src="assets/img/freelancer-logo.jpg" alt="Image not Found!" style="height: 50px; width: 60%;"/>
+              <h3 class="mb-5">Verification Form</h3>
+
+              <br>
+              <form (ngSubmit)="submitForm()" >
+              <div class="mb-4">
+                <!-- <h6 class=" text-uppercase">OR</h6> -->
+                <hr data-content="OR" class="hr-text">
+              </div>
+
+              <!-- Name input -->
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="text" class="form-control"
+                name="name" [(ngModel)]=userService.name placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              
+              <!-- Email input -->
+              <div class="input-group mb-3">
+                <input type="text" class="form-control"
+                name="email" [(ngModel)]=userService.email placeholder="Recipient's Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <span class="input-group-text" >@gmail.com</span>
+              </div>
+  
+              <!-- Password input -->
+              <div class="input-group mb-3">
+                <input [type]="userService.password_type" class="form-control" 
+                name="password" [(ngModel)]=userService.password placeholder="Password" >
+                <button style="width: 20%;" [class]="userService.class_status" type="button" (click)="userService.show_password()">{{ userService.btn_name }}</button>
+              </div>
+   
+              <div class="pt-1 mb-4">
+                <button style="width: 40%;" class="btn btn-primary btn-block" type="submit" data-toggle="modal" data-target="#alert">Activate Account</button>
+              </div>  
+              
+              <hr class="my-4">
+              
+              </form>
+              <button style="width: 40%;" class="btn btn-danger btn-block" type="button" routerLink="/signup" routerLinkActive='active'>Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </section>

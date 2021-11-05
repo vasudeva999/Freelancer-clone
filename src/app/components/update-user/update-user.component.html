@@ -1,0 +1,43 @@
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img style="height: 80%; width: 80%;" class="rounded-circle mt-5" *ngIf=" userService.getImg()!=null " src="{{ userService.path}}{{userService.getImg() }}" alt="Image Not Found!">
+                <img style="height: 80%; width: 80%;" class="rounded-circle mt-5" *ngIf=" userService.getImg()==null " src="assets/img/noImage.png" alt="Image Not Found!">
+                <span class="font-weight-bold">{{ userService.name }}</span><span class="text-black-50">{{ userService.email }}</span><span> </span></div>
+        </div>
+        
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Settings</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-9"><label class="labels">Name</label><input type="text" class="form-control" name="name" [(ngModel)]="userService.name" disabled placeholder="first name" ></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="text" class="form-control" name="phoneNum" [(ngModel)]="userService.phoneNum" placeholder="update phone number" ></div>
+                        <label class="labels">Password</label>
+                        <div class="col-md-12 input-group">
+                            <input [type]="userService.password_type" class="form-control" name="password" [(ngModel)]="userService.password" placeholder="update Password" >
+                            <button style="width: 20%;" [class]="userService.class_status" type="button" (click)="userService.show_password()">{{ userService.btn_name }}</button>
+                        </div>
+                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" name="email" [(ngModel)]="userService.email" placeholder="enter email id" ></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12" ><label class="labels">Upload Image</label><input [disabled]="delImg" type="file" class="form-control" 
+                            name="file" (change)="onChange($event)" aria-label="file example"></div>
+                        
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" [disabled]="hide" (click)="hideUpload()" type="checkbox" >
+                                <label class="form-check-label" style="margin-right: 10%;">Delete existing image</label>
+                              </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 60%;" 
+                    data-toggle="modal" data-target="#alert" (click)="submitForm()">Save Details</button>
+                </div>
+            </div>
+        
+    </div>
+</div>

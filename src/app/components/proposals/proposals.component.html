@@ -1,0 +1,44 @@
+
+  <main role="main" class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <!-- {% block content %}{% endblock %} -->
+            
+            <h3 *ngIf='allProposals.length==0'>{{ userService.data_check }}</h3>
+            <article class="media content-section" *ngFor="let proposal of allProposals">
+                <div class="media-body">
+                <div class="article-metadata">
+                    <img src="{{ userService.path }}{{ proposal[1].img }}" alt="No Image!" style="width: 5%;">
+                    <a class="mr-2" style="text-decoration: none;" (click)="showProfile(proposal[1]._id)">@{{ proposal[1].name }}</a>
+                    
+                </div>
+                <!-- <h2><a class="article-title" href="/showProject/{{project[0]._id}}"> project[0].title </a></h2> -->
+                <h6>INR {{proposal[0].bidAmount}} in {{proposal[0].days}} day(s)</h6>
+                <p class="article-content" style="display: -webkit-box;
+                overflow : hidden;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;"> {{proposal[0].describe}} </p>
+                </div>
+                <div class="article-metadata">
+                    
+                </div>
+                <!-- <button type="button" class="btn btn-outline-primary" (click)="explore(project[0]._id)">Explore</button>
+                <button type="button" class="btn btn-outline-primary" style="margin-left: 10%;" (click)="showProfile(project[1]._id)">View Profile</button> -->
+            </article>
+          </div>
+      <div class="col-md-4">
+        <!-- <div class="content-section">
+          <h3>Our Sidebar</h3>
+          <p class='text-muted'>You can put any information here you'd like.
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-light">Latest Posts</li>
+              <li class="list-group-item list-group-item-light">Announcements</li>
+              <li class="list-group-item list-group-item-light">Calendars</li>
+              <li class="list-group-item list-group-item-light">etc</li>
+            </ul>
+          
+        </div> -->
+      </div>
+    </div>
+  </main>

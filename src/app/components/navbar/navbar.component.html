@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+    <div class="container">
+        <a class="navbar-brand mr-4" href="/"><img src="assets/img/freelancer-logo.jpg" alt="Image not Found!" style=" width: 50%;"/></a>
+      <!-- <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">Freelancer</a> -->
+      <button class="navbar-toggler" type="button" style="color: rgb(26, 19, 19); background-color: rgb(46, 43, 43);" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="" style="color: black;">Home</a>
+          <a class="nav-item nav-link" href="#" style="color: black;">About</a>
+          <a class="nav-item nav-link" routerLink="/post-project" *ngIf="userService.getIsLogin()" routerLinkActive="active" style="color: black;">Post_Project</a>
+        </div>
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" routerLink="/login" *ngIf="!userService.getIsLogin()" routerLinkActive="active" style="color: black; cursor: pointer;">Login</a>
+          <a class="nav-item nav-link" routerLink="/signup" *ngIf="!userService.getIsLogin()" routerLinkActive="active" style="color: black; cursor: pointer;">Register</a>
+          <a class="nav-item nav-link" (click)="signOut()" *ngIf="userService.getIsLogin()" routerLinkActive="active" style="color: black; cursor: pointer; padding-top: 5%;">Logout</a>
+
+          <img class="nav-item nav-link" style="margin-top: 3%;" *ngIf="userService.getIsLogin() && userService.getImg()" src="{{userService.path}}{{userService.img}}" alt="Image" width="50" height="50" (click)="showProfile(userService.id)">
+          <img class="nav-item nav-link" style="margin-top: 3%;" *ngIf="userService.getIsLogin() && !userService.getImg()" src="assets/img/noImage.png" alt="Image" width="50" height="50" (click)="showProfile(userService.id)">
+          <a class="nav-item nav-link" (click)="showProfile(userService.id)" *ngIf="userService.getIsLogin()" routerLinkActive="active" style="color: black; cursor: pointer;">@{{ userService.getName() }} @{{ userService.getEmail() }}</a>
+          <!-- <a class="nav-item nav-link Disable" *ngIf="userService.getIsLogin()" routerLinkActive="active">{{ userService.email }}</a> -->
+
+          <!-- <a class="nav-item nav-link" (click)="showProfile(userService.id)" *ngIf="userService.getIsLogin()">View_Profile</a> -->
+        </div>
+      </div>
+    </div>
+    
+  </nav>
+  
+
+
+<div style="overflow: scroll;" class="navbar navbar-expand-md navbar-light bg-light " role="navigation">
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto"><br>
+            <li class="nav-item active">
+                <a href="/"><img src="assets/img/freelancer-logo.jpg" alt="Image not Found!" style=" width: 45%;"/></a>
+            </li>
+        </ul>
+    </div>
+
+    
+</div>
+
+
+
+<div class="navbar navbar-expand-md navbar-dark bg-dark" role="navigation">
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto"><br>
+            <li class="nav-item active">
+                <a class="nav-link" href="dashboard">Dashboard </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="all-projects"> All Projects </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="my-projects"> My Projects </a>
+                <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+            </li>
+
+        </ul>
+        <!-- <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> -->
+    </div>
+
+    
+</div>

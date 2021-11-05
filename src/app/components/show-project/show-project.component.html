@@ -1,0 +1,82 @@
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <!-- {% block content %}{% endblock %} -->
+            <h3 *ngIf='project==null'>{{ userService.data_check }}</h3>
+            <article class="media content-section" >
+                <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" style="text-decoration: none; cursor: pointer;" (click)="showProfile(project[1]._id)">@{{ project[1].name }}</a>
+                    <a class="mr-2" style="text-decoration: none; margin-left: 5%;" *ngIf="userService.getId()==project[1]._id" href="update-project/{{ project[0]._id }}">Edit</a>
+                    <small class="text-muted" style="margin-left: 20%;">Posted Date : {{ userService.getDate(project[0].date) }}</small>
+                </div>
+                <h2 style="cursor: pointer;">{{ project[0].title }}</h2>
+                <p class="article-content" >{{ project[0].describe }}</p>
+
+                </div>
+                <div class="article-metadata">
+                    
+                </div>
+                <h5>Skills Required</h5>
+                <h6>{{ project[0].skills }}</h6>
+                <a href="{{userService.path}}{{project[0].file }}" style="text-decoration: none;" target="_blank">Attached Docs</a>
+                
+            </article>
+
+            <article class="media content-section" >
+                <div class="media-body">
+                <div class="article-metadata">
+                    <h3>Place a Bid on this Project</h3>
+                    <h6>Bid's left : {{ currentBids }}</h6>
+                </div>
+                <small>You will be able to edit your bid until the project is awarded to someone.</small>
+                <h5>Bid Details</h5>
+                <form class="was-validated" (ngSubmit)="makeBid(project[0]._id)">
+                    <h6>Bid Amount</h6>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text"><i class="fa fa-inr"></i></span>
+                        <input type="text" class="form-control is-invalid"
+                        name="bidAmount" [(ngModel)]="bidAmount" placeholder="Enter bid amount" required>
+                        <span class="input-group-text">INR / hour</span>
+                    </div>
+                    
+
+                    <h6>This project will be delivered in</h6>
+                    <div class="input-group mb-2">
+                        <input type="number" class="form-control is-invalid"
+                        name="days" [(ngModel)]="days" placeholder="Enter number of days" min=1 max={{project[0].daysToExpire}} required>
+                        <span class="input-group-text">Days</span>
+                        </div>
+                    
+                    <label>Describe your proposal</label>
+                    <small>Not sure what to write? Read our guide on how to write a winning bid!</small>
+                    <textarea class="form-control is-invalid" 
+                    name="describe" [(ngModel)]="describe" placeholder="What makes you the best candidate for this project?" required></textarea><br>
+
+                    <h5 *ngIf="sameUser"> Project creator can't make a bid</h5>
+                    <button class="btn btn-primary" type="submit"
+                    data-toggle="modal" data-target="#alert" [disabled]="btn_disable">Place Bid</button>
+                </form>
+                
+                </div>
+                <div class="article-metadata">
+                    
+                </div>
+                
+            </article>
+          </div>
+          <div class="col-md-4">
+            <div class="content-section">
+              <h3>Navigation</h3>
+              <p class='text-muted'>You can navigate any where else in our platform.
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-light"><a href="/all-projects" style="text-decoration: none;">Latest Posts</a></li>
+                  <li class="list-group-item list-group-item-light"><a href="proposals/{{project[0]._id}}" style="text-decoration: none;">Proposals</a></li>
+                  <li class="list-group-item list-group-item-light"><a (click)="showProfile(project[1]._id)" style="text-decoration: none; color: rgb(10, 89, 202);">About Creator</a></li>
+                  <li class="list-group-item list-group-item-light"><a href="" style="text-decoration: none;">Report</a></li>
+                </ul>
+              <!-- </p> -->
+            </div>
+          </div>
+    </div>
+</main>

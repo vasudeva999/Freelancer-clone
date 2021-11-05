@@ -1,0 +1,68 @@
+<div class="container py-4 h-100">
+    <form class="was-validated" (ngSubmit)=submitProject()>
+        <h4>Choose a name for your project</h4>
+        <div class="col-md-9">
+            <input type="text" class="form-control is-invalid" id="validationServer03" 
+            name="projectName" [(ngModel)]=userService.projectName aria-describedby="validationServer03Feedback" >
+        </div>
+
+        
+        <div class="col-md-9">
+          <h4>Tell us more about your project</h4>
+            <textarea class="form-control is-invalid" id="validationTextarea" 
+            name="describe" [(ngModel)]=userService.describe placeholder="Required example textarea" ></textarea>
+        </div>
+        
+        
+        <div class="row mt-3">
+          <div class="col-md-12" ><h4>Upload files</h4><input [disabled]="delImg" type="file" class="form-control" 
+              name="file" (change)="onChange($event)" aria-label="file example"></div>
+          
+              <div class="form-check form-switch">
+                  <input class="form-check-input" [disabled]="hide" (click)="hideUpload()" type="checkbox" >
+                  <label class="form-check-label" style="margin-right: 10%;">Delete existing files</label>
+                </div>
+      </div>
+
+        <h4>What skills are required?</h4>
+        <small>Enter up to 5 skills that best describe your project. Freelancers will use these skills to find projects they are most interested and experienced in. Put a comma (,) to seperate the skills</small>
+        <div class="mb-3">
+            <div class="col-md-8">
+                <input type="text" class="form-control is-invalid" id="validationServer03" 
+                name="skills" [(ngModel)]=userService.skills aria-describedby="validationServer03Feedback" >
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <label for="validationServer01">Minimum Price</label>
+            <div class="col-md-4 mb-3 input-group">
+              <span class="input-group-text"><i class="fa fa-inr"></i></span>
+              <input type="number" class="form-control is-valid" style="margin-right: 70%;" 
+              name="minPrice" [(ngModel)]=userService.minPrice placeholder="min price" >
+            </div>
+            <label for="validationServer02">Maximum Price</label>
+            <div class="col-md-4 mb-3 input-group">
+              <span class="input-group-text"><i class="fa fa-inr"></i></span>
+              <input type="number" class="form-control is-valid" style="margin-right: 70%;" 
+              name="maxPrice" [(ngModel)]=userService.maxPrice placeholder="max price" >
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationServerUsername">Expire in days</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" >Expire on</span>
+                </div>
+                <input type="number" class="form-control is-invalid" placeholder="Number of days" 
+                name="expire" [(ngModel)]=userService.expire aria-describedby="inputGroupPrepend3" value="1" min="1" max="10" >
+                
+              </div>
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary"
+        data-toggle="modal" data-target="#alert">Next</button>
+        <button type="button" style="margin-left: 8%;" class="btn btn-primary" routerLink="/my-projects">< Back</button>
+    </form>
+</div>
